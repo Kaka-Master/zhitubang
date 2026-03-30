@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="职途帮&#8482——专注大学生职业规划，基于向阳生涯体系，为大学生提供1v1定制化职业测评、简历优化、面试指导等全流程服务，帮每一位大学生实现「职业有方向，青春不迷茫」。"/>
+<title>职途帮<sup>TM</sup> - 专注大学生职业规划 | 职业有方向，青春不迷茫</title>
+<meta name="keywords" content="职业规划,大学生职业规划,职业测评,向阳生涯,职业方向,简历优化,面试指导"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--p:#168CFF;--pd:#0E77E6;--a:#36D399;--a2:#FF6B35;--bg:#F2F9F7;--bg2:#E6F4EF;--t:#0D1117;--tm:#60728A;--w:#FFFFFF;--bd:#D1E7E0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+a{color:var(--p);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--p);border-radius:3px}
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:1.25rem;color:var(--t)}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--p),var(--a));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:8px 16px;border-radius:50px;font-size:.88rem;font-weight:500;color:var(--tm);transition:all .25s}
+.nav-links a:hover{color:var(--p);background:rgba(22,140,255,.06)}
+.nav-cta{padding:9px 22px!important;background:var(--p)!important;color:#fff!important;border-radius:50px!important;font-weight:600!important;box-shadow:0 4px 14px rgba(22,140,255,.3)!important}
+.nav-cta:hover{background:var(--pd)!important;transform:translateY(-1px);box-shadow:0 6px 20px rgba(22,140,255,.4)!important;color:#fff!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border-radius:8px}
+.hamburger:hover{background:rgba(0,0,0,.04)}
+.hamburger span{width:22px;height:2.5px;background:var(--t);border-radius:2px;display:block;transition:all .3s}
+.mm{display:none;position:fixed;inset:0;background:rgba(242,249,247,.97);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.mm.active{display:flex}
+.mm a{font-size:1.3rem;font-weight:700;color:var(--t);padding:12px 32px;border-radius:12px;transition:all .2s}
+.mm a:hover{color:var(--p);background:rgba(22,140,255,.07)}
+.mc{position:absolute;top:24px;right:24px;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--tm)}
+/* HERO */
+.hero{min-height:100vh;padding:100px 0 80px;background:linear-gradient(160deg,#E6F4EF 0%,#D4EDE4 40%,#F2F9F7 100%);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-80px;right:-60px;width:480px;height:480px;background:radial-gradient(circle,rgba(22,140,255,.05) 0%,transparent 65%);border-radius:50%}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-40px;width:360px;height:360px;background:radial-gradient(circle,rgba(54,211,153,.04) 0%,transparent 65%);border-radius:50%}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(22,140,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(22,140,255,.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-left{min-width:0;padding-right:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(22,140,255,.1),rgba(74,144,226,.06));border:1px solid rgba(22,140,255,.18);color:var(--p);padding:7px 16px;border-radius:50px;font-size:.8rem;font-weight:700;margin-bottom:20px}
+.badge-dot{width:8px;height:8px;background:var(--a);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.hero-slogan{font-size:3.4rem;font-weight:900;line-height:1.15;color:var(--t);margin-bottom:20px;letter-spacing:-.5px}
+.hero-slogan em{font-style:normal;color:var(--p)}
+.hero-slogan em::after{content:"";position:absolute;bottom:-4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p),var(--a));border-radius:2px;opacity:.75}
+.hero-sub{font-size:1.12rem;color:var(--tm);margin-bottom:28px;line-height:1.85}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.btn-pri{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--p);color:#fff;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .25s;box-shadow:0 4px 14px rgba(22,140,255,.3)}
+.btn-pri:hover{background:var(--pd);transform:translateY(-2px);box-shadow:0 8px 24px rgba(22,140,255,.4)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:var(--w);color:var(--t);border:1.5px solid var(--bd);border-radius:50px;font-weight:600;font-size:.95rem;transition:all .25s}
+.btn-ghost:hover{border-color:var(--p);color:var(--p);transform:translateY(-2px)}
+.hero-trust{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;color:var(--tm);padding:9px 16px;background:var(--w);border-radius:50px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.hero-right{min-width:0;display:flex;flex-direction:column;gap:14px}
+.hero-card{background:var(--w);border:1px solid rgba(22,140,255,.1);border-radius:24px;padding:28px;box-shadow:0 8px 32px rgba(22,140,255,.08);position:relative;overflow:hidden}
+.hero-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p),#4A90E2,var(--a))}
+.hero-card-content{display:flex;flex-direction:column;gap:16px}
+.card-title{font-size:1.05rem;font-weight:700;color:var(--t);margin-bottom:4px}
+.card-sub{font-size:.82rem;color:var(--tm);line-height:1.65}
+.card-3-systems{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.sys-item{background:var(--bg);border:1px solid rgba(22,140,255,.08);border-radius:14px;padding:14px 10px;text-align:center;transition:all .3s}
+.sys-item:hover{border-color:var(--p);background:rgba(22,140,255,.04);transform:translateY(-2px)}
+.sys-num{width:28px;height:28px;background:linear-gradient(135deg,var(--p),#4A90E2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;margin:0 auto 8px}
+.sys-title{font-size:.82rem;font-weight:700;color:var(--t);margin-bottom:4px}
+.sys-desc{font-size:.72rem;color:var(--tm);line-height:1.5}
+.hero-pains{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:18px;padding:18px 22px}
+.hero-pains p{font-size:.85rem;color:var(--tm);line-height:1.75;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.pain-tag{display:inline-flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid rgba(22,140,255,.1);color:var(--tm);padding:4px 10px;border-radius:50px;font-size:.78rem;font-weight:500;white-space:nowrap}
+.pain-tag:hover{border-color:var(--p);color:var(--p)}
+/* SECTIONS */
+.section{padding:90px 0;position:relative}
+.section-alt{background:var(--w)}
+.section-header{text-align:center;max-width:680px;margin:0 auto 56px;position:relative}
+.section-header::after{content:"";display:block;width:40px;height:3px;background:linear-gradient(90deg,var(--p),var(--a));margin:16px auto 0;border-radius:2px}
+.section-tag{display:inline-block;background:rgba(22,140,255,.08);border:1px solid rgba(22,140,255,.15);color:var(--p);padding:5px 14px;border-radius:50px;font-size:.75rem;font-weight:700;margin-bottom:14px;letter-spacing:.5px;display:inline-block}
+.section-title{font-size:2.4rem;font-weight:900;color:var(--t);margin-bottom:14px;line-height:1.25;letter-spacing:-.5px}
+.section-sub{font-size:1.05rem;color:var(--tm);max-width:600px;line-height:1.8;margin:0 auto;word-break:keep-all;white-space:nowrap}
+/* METHODOLOGY */
+.method-intro{text-align:center;max-width:700px;margin:0 auto 48px;font-size:1.08rem;color:var(--tm);line-height:1.85}
+.method-intro strong{color:var(--p);font-weight:700}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:36px}
+.method-card{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:22px;padding:32px 28px;position:relative;transition:all .35s;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.method-card:hover{transform:translateY(-8px);border-color:var(--p);box-shadow:0 16px 48px rgba(22,140,255,.12)}
+.method-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(22,140,255,.1),rgba(74,144,226,.06));border:1px solid rgba(22,140,255,.12);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
+.method-num{position:absolute;top:16px;right:22px;font-size:3.5rem;font-weight:900;color:rgba(22,140,255,.05);line-height:1;user-select:none}
+.method-title{font-size:1.18rem;font-weight:750;color:var(--t);margin-bottom:10px}
+.method-desc{font-size:.88rem;color:var(--tm);line-height:1.75}
+.method-loop{background:linear-gradient(135deg,rgba(22,140,255,.08),rgba(74,144,226,.05));border:1px solid rgba(22,140,255,.15);border-radius:20px;padding:30px;text-align:center;position:relative;overflow:hidden}
+.method-loop::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(22,140,255,.04),transparent)}
+.method-loop p{font-size:.9rem;color:var(--tm);line-height:1.75;position:relative;z-index:1;word-break:keep-all;white-space:nowrap}
+.method-loop strong{color:var(--p);font-weight:700}
+/* SERVICES */
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.service-card{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:22px;padding:30px;transition:all .35s;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.service-card:hover{transform:translateY(-8px);border-color:var(--p);box-shadow:0 16px 48px rgba(22,140,255,.13)}
+.service-card:hover::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p),#4A90E2,var(--a))}
+.service-icon{width:48px;height:48px;background:linear-gradient(135deg,rgba(22,140,255,.12),rgba(74,144,226,.08));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+.service-title{font-size:1.08rem;font-weight:750;color:var(--t);margin-bottom:8px}
+.service-desc{font-size:.86rem;color:var(--tm);line-height:1.7}
+.hot-tag{position:absolute;top:16px;right:16px;background:linear-gradient(135deg,var(--a),#FF8C00);color:#fff;font-size:.7rem;font-weight:700;padding:4px 11px;border-radius:50px}
+.service-badge{display:inline-flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid rgba(22,140,255,.1);color:var(--tm);padding:3px 10px;border-radius:50px;font-size:.75rem;font-weight:500;margin-top:4px}
+.btn-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.85rem;color:var(--p);font-weight:600}
+/* ADVANTAGES */
+.adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.adv-card{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:22px;padding:32px;display:flex;gap:20px;transition:all .35s;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.adv-card:hover{transform:translateY(-5px);border-color:var(--p);box-shadow:0 12px 36px rgba(22,140,255,.1)}
+.adv-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(22,140,255,.12),rgba(74,144,226,.08));border:1px solid rgba(22,140,255,.12);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.adv-content h3{font-size:1.1rem;font-weight:750;color:var(--t);margin-bottom:8px}
+.adv-content p{font-size:.88rem;color:var(--tm);line-height:1.75;margin:0}
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.team-card{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:22px;padding:28px 22px;text-align:center;transition:all .35s;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.team-card:hover{transform:translateY(-8px);border-color:var(--p);box-shadow:0 16px 48px rgba(22,140,255,.12)}
+.team-avatar{width:80px;height:80px;background:linear-gradient(135deg,var(--bg2),rgba(22,140,255,.06));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px;position:relative;overflow:hidden}
+.team-avatar::after{content:"";position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(transparent,rgba(22,140,255,.08))}
+.team-name{font-size:1rem;font-weight:750;color:var(--t);margin-bottom:6px}
+.team-cert{font-size:.72rem;color:var(--p);font-weight:700;margin-bottom:4px}
+.team-exp{font-size:.8rem;color:var(--tm);margin-bottom:10px;word-break:keep-all;white-space:nowrap}
+.team-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.team-tag{background:var(--bg2);color:var(--tm);font-size:.7rem;padding:3px 9px;border-radius:50px}
+.team-promise{background:rgba(22,140,255,.06);border:1px solid rgba(22,140,255,.15);border-radius:18px;padding:28px;margin-top:36px;text-align:center}
+.team-promise p{font-size:.9rem;color:var(--tm);line-height:1.75}
+.team-promise strong{color:var(--p);font-weight:700}
+/* VISION */
+.vision-story{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:22px;padding:40px 36px;margin-bottom:36px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.vision-story h3{font-size:1.45rem;font-weight:900;color:var(--t);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--bd)}
+.vision-story p{font-size:1rem;color:var(--tm);line-height:1.85}
+.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.vision-value{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:22px;padding:28px;transition:all .35s;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.vision-value:hover{transform:translateY(-5px);border-color:var(--p);box-shadow:0 12px 36px rgba(22,140,255,.1)}
+.vision-phase{font-size:.72rem;color:var(--p);font-weight:700;margin-bottom:10px;letter-spacing:.5px;text-transform:uppercase}
+.vision-value h4{font-size:1.05rem;font-weight:750;color:var(--t);margin-bottom:10px}
+.vision-value p{font-size:.88rem;color:var(--tm);line-height:1.75;margin:0}
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#168CFF 0%,#3BA0FF 60%,#168CFF 100%);position:relative;padding:100px 0;overflow:hidden}
+.cta-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(255,255,255,.1) 0%,transparent 70%)}
+.cta-section::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px}
+.cta-content{text-align:center;max-width:680px;margin:0 auto;position:relative;z-index:1}
+.cta-content h2{font-size:2.1rem;font-weight:900;color:#fff;margin-bottom:16px;letter-spacing:-.5px;line-height:1.3}
+.highlight{background:linear-gradient(135deg,#FFD700,#FF8C00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+.cta-content > p{font-size:1.08rem;color:rgba(255,255,255,.85);line-height:1.8;margin-bottom:20px}
+.cta-bonus{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:16px 24px;margin-bottom:28px}
+.cta-bonus p{color:#fff;font-weight:700;margin:0;font-size:.9rem}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{padding:14px 32px;background:#fff;color:var(--p);border-radius:50px;font-weight:700;font-size:.95rem;transition:all .25s;box-shadow:0 4px 20px rgba(22,140,255,.3);display:inline-flex;align-items:center;gap:8px}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.2)}
+.btn-ow{padding:14px 30px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:50px;font-weight:600;font-size:.95rem;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-ow:hover{background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px)}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:22px}
+.contact-item{display:flex;align-items:flex-start;gap:14px}
+.contact-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(22,140,255,.1),rgba(74,144,226,.06));border:1px solid rgba(22,140,255,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item h4{font-size:.9rem;font-weight:700;color:var(--t);margin-bottom:4px}
+.contact-item p{font-size:.85rem;color:var(--tm);line-height:1.6;word-break:keep-all;white-space:nowrap}
+.contact-form{background:var(--w);border:1px solid rgba(22,140,255,.08);border-radius:24px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,.05)}
+.form-title{font-size:1.2rem;font-weight:800;color:var(--t);margin-bottom:24px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:.82rem;font-weight:600;color:var(--t)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;background:var(--bg);border:1.5px solid var(--bd);border-radius:12px;font-family:'Noto Sans SC',sans-serif;font-size:.9rem;color:var(--t);transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--p);outline:none;box-shadow:0 0 0 3px rgba(22,140,255,.1)}
+.form-group textarea{resize:vertical;min-height:96px}
+.btn-submit{width:100%;padding:13px;background:var(--p);color:#fff;border:none;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .25s;box-shadow:0 4px 14px rgba(22,140,255,.3);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-submit:hover{background:var(--pd);transform:translateY(-2px);box-shadow:0 8px 24px rgba(22,140,255,.4)}
+.form-success{text-align:center;padding:40px 20px;display:none}
+.form-success.active{display:block}
+.form-success h3{font-size:1.2rem;font-weight:800;color:var(--t);margin-bottom:10px}
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#168CFF 0%,#0E77E6 100%);padding:56px 0 0;color:#fff}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-logo{display:flex;align-items:center;gap:10px;font-size:1.2rem;font-weight:900;color:#fff}
+.footer-logo .logo-icon{background:rgba(255,255,255,.15);border-radius:10px}
+.footer-brand p{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:280px;word-break:keep-all;white-space:nowrap}
+.footer h4{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase;opacity:.9}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:.85rem;color:rgba(255,255,255,.6);transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{background:rgba(0,0,0,.08);padding:18px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6}
+/* ANIMATIONS */
+@keyframes reveal{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px)}
+.reveal.active{animation:reveal .7s ease forwards}
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero .container{grid-template-columns:1fr;gap:40px}
+  .hero-left{padding-right:0;text-align:center}
+  .hero-sub{max-width:100%}
+  .hero-actions{justify-content:center}
+  .hero-right{max-width:600px;margin:0 auto;width:100%}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:88px 0 56px;min-height:auto}
+  .hero-slogan{font-size:2.4rem}
+  .section{padding:70px 0}
+  .section-title{font-size:2rem}
+  .method-grid,.service-grid,.adv-grid,.vision-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .form-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .cta-section{padding:80px 0}
+  .cta-actions{flex-direction:column;align-items:center}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+/* ===== 8处跨行修复CSS（参考文档方案）===== */
+/* 强制单行显示 */
+.method-loop p,
+.section-sub,
+.team-exp,
+.contact-item p,
+.footer-brand p {
+  word-break: keep-all;   /* 不拆分中文词语/英文单词 */
+  white-space: nowrap;    /* 强制单行，超出滚动 */
+}
+/* 移动端允许换行（优先可读性） */
+@media (max-width: 768px) {
+  .method-loop p,
+  .section-sub,
+  .team-exp,
+  .contact-item p,
+  .footer-brand p {
+    font-size: 0.8rem;
+    white-space: normal;   /* 移动端允许换行 */
+  }
+}
+/* ===== END 8处跨行修复CSS ===== */
+/* 草料表单iframe样式 */
+.form-iframe-wrap {
+  width: 100%;
+}
+.form-alt-link {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--tm);
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo"><div class="logo-icon"></div>职途帮<sup>&#8482</sup></a>
+    <div class="nav-links">
+      <a href="#methodology">核心方法</a>
+      <a href="#services">服务产品</a>
+      <a href="#advantages">核心优势</a>
+      <a href="#team">核心团队</a>
+      <a href="#vision">我们的初心</a>
+      <a href="https://qr61.cn/oB8tj3/qiDA8lU" target="_blank" class="nav-cta">立即咨询</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('active')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mm" id="mobileMenu">
+  <button class="mc" onclick="document.getElementById('mobileMenu').classList.remove('active')">&#10005;</button>
+  <a href="#methodology" onclick="document.getElementById('mobileMenu').classList.remove('active')">核心方法</a>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('active')">服务产品</a>
+  <a href="#advantages" onclick="document.getElementById('mobileMenu').classList.remove('active')">核心优势</a>
+  <a href="#team" onclick="document.getElementById('mobileMenu').classList.remove('active')">核心团队</a>
+  <a href="#vision" onclick="document.getElementById('mobileMenu').classList.remove('active')">我们的初心</a>
+  <a href="https://qr61.cn/oB8tj3/qiDA8lU" target="_blank" onclick="document.getElementById('mobileMenu').classList.remove('active')">立即咨询</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="badge-dot"></span>向阳生涯体系认证职业规划服务机构</div>
+      <h1 class="hero-slogan" style="position:relative;display:block">职业有方向<br><em>青春不迷茫</em></h1>
+      <p class="hero-sub">职途帮&#8482是专注大学生职业规划和生涯发展的新锐品牌。基于向阳生涯体系，为大学生提供1v1定制化职业测评、职业方向定位、简历优化、面试指导等全流程服务，帮每一位大学生实现「职业有方向，青春不迷茫」。</p>
+      <div class="hero-actions">
+        <a href="https://qr61.cn/oB8tj3/qiDA8lU" target="_blank" class="btn-pri">&#9743; 预约免费 1v1 咨询</a>
+        <a href="#services" class="btn-ghost">&#9432; 查看核心服务</a>
+      </div>
+      <div class="hero-trust">&#10003; 所有咨询师均为向阳生涯体系认证中国职业规划师（CCDM）</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-content">
+          <p class="card-title">&#128640; 向阳生涯职业规划模型三大系统</p>
+          <p class="card-sub">从「想做、能做、可做」三大维度，定制专属职业方向</p>
+          <div class="card-3-systems">
+            <div class="sys-item">
+              <div class="sys-num">1</div>
+              <div class="sys-title">职业取向系统</div>
+              <div class="sys-desc">挖清你想做什么、适合做什么</div>
+            </div>
+            <div class="sys-item">
+              <div class="sys-num">2</div>
+              <div class="sys-title">商业价值系统</div>
+              <div class="sys-desc">明确你能做什么、核心优势是什么</div>
+            </div>
+            <div class="sys-item">
+              <div class="sys-num">3</div>
+              <div class="sys-title">职业机会系统</div>
+              <div class="sys-desc">找准职场需要什么、你能切入哪些机会</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="hero-pains">
+          <p>
+            <span class="pain-tag">&#9679; 大学虚度，毕业迷茫？</span>
+            <span class="pain-tag">&#9679; 海投简历无回应？</span>
+            <span class="pain-tag">&#9679; 不知道自己适合什么工作？</span>
+            <span class="pain-tag highlight">&#9679; 入职后频繁跳槽？——我们帮你一次定准方向</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="section" id="methodology">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">&#128640; 核心方法</div>
+        <h2 class="section-title">我们的方法：向阳生涯职业规划模型</h2>
+        <p class="section-sub">拒绝通用模板，只为帮你找准职业方向</p>
+      </div>
+      <p class="method-intro">三大系统形成完整闭环，帮你找到「想做 + 能做 + 可做」的精准职业方向，<br>真正实现 <strong>职业有方向，青春不迷茫</strong></p>
+      <div class="method-grid">
+        <div class="method-card reveal">
+          <div class="method-icon">&#128173;</div>
+          <div class="method-num">01</div>
+          <h3 class="method-title">职业取向系统</h3><p class="method-desc">挖清你想做什么、适合做什么。结合权威 MBTI、霍兰德等职业测评 + 1v1 深度访谈，精准定位你的性格类型、职业兴趣与核心价值观，打破「我以为我适合」的主观认知误区。</p>
+        </div>
+        <div class="method-card reveal">
+          <div class="method-icon">&#128200;</div>
+          <div class="method-num">02</div>
+          <h3 class="method-title">商业价值系统</h3><p class="method-desc">明确你能做什么、核心优势是什么。深度挖掘你的专业能力、校园经历、可迁移技能，找到你的核心竞争力，打破「我什么都不会」的自我否定，找到真正属于你的职场赛道。</p>
+        </div>
+        <div class="method-card reveal">
+          <div class="method-icon">&#128160;</div>
+          <div class="method-num">03</div>
+          <h3 class="method-title">职业机会系统</h3><p class="method-desc">找准职场需要什么、你能切入哪些机会。结合行业趋势深度分析、企业真实需求洞察、校招资源精准匹配，打通职场信息差，让你的职业方向贴合市场需求，有处可去。</p>
+        </div>
+      </div>
+      <div class="method-loop reveal">
+        <p>&#8594; 三大系统形成完整闭环，帮你找到「想做 + 能做 + 可做」的精准职业方向，真正实现 <strong>职业有方向，青春不迷茫</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-alt" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">&#9733; 分阶定制服务</div>
+        <h2 class="section-title">适配你的每一个大学阶段<br>陪你找准职业方向</h2>
+        <p class="section-sub">从职业认知到求职落地，全流程陪伴式服务，让每一个大学阶段都有方向、不迷茫</p>
+      </div>
+      <div class="service-grid">
+        <!-- 基础档 -->
+        <div class="service-card reveal">
+          <span class="hot-tag">&#127942; 热门推荐</span>
+          <div class="service-icon">&#128640;</div>
+          <h3 class="service-title">基础档 · 职业认知启蒙服务</h3>
+          <p class="service-desc">适合大一 / 大二探索期学生</p>
+          <div style="margin:12px 0;padding:10px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+            <p style="font-size:.78rem;font-weight:700;color:var(--p);margin-bottom:8px">&#9888; 核心解决痛点</p>
+            <p style="font-size:.82rem;color:var(--tm);line-height:1.65">大学无目标、虚度时光，对未来职业毫无概念；大三陷入迷茫，不知从何开始准备；想探索职业方向，但缺乏专业指导</p>
+          </div>
+          <p style="font-size:.78rem;font-weight:700;color:var(--a);margin-bottom:8px">&#9745; 核心交付物</p>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65">《个人职业特质分析报告》《职业探索方向清单》《大学职业探索行动计划表》</p>
+          <p style="margin-top:14px;font-size:.88rem;color:var(--t);font-weight:600">核心价值：<br>建立职业认知，明确探索方向，让大学学习有目标，提前锁定职业方向，青春不迷茫。</p>
+        </div>
+        <!-- 进阶档 -->
+        <div class="service-card reveal">
+          <div class="service-icon">&#128200;</div>
+          <h3 class="service-title">进阶档 · 职业方向精准定位服务</h3>
+          <p class="service-desc">适合大三 / 准职场人冲刺期</p>
+          <div style="margin:12px 0;padding:10px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+            <p style="font-size:.78rem;font-weight:700;color:var(--p);margin-bottom:8px">&#9888; 核心解决痛点</p>
+            <p style="font-size:.82rem;color:var(--tm);line-height:1.65">不知道自己适合什么工作，方向模糊；实习/校招无目标，海投简历无回应；想精准锁定职业方向，但缺乏专业方法</p>
+          </div>
+          <p style="font-size:.78rem;font-weight:700;color:var(--a);margin-bottom:8px">&#9745; 核心交付物</p>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65">《核心职业方向定位报告》《能力提升清单》《实习+校招行动路径方案》</p>
+          <p style="margin-top:14px;font-size:.88rem;color:var(--t);font-weight:600">核心价值：<br>精准锁定职业方向，让实习/校招有明确目标，避免海投简历、盲目实习的弯路。</p>
+        </div>
+        <!-- 高阶档 -->
+        <div class="service-card reveal">
+          <div class="service-icon">&#127891;</div>
+          <h3 class="service-title">高阶档 · 求职落地全流程规划服务</h3>
+          <p class="service-desc">适合大四 / 应届毕业生求职期</p>
+          <div style="margin:12px 0;padding:10px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+            <p style="font-size:.78rem;font-weight:700;color:var(--p);margin-bottom:8px">&#9888; 核心解决痛点</p>
+            <p style="font-size:.82rem;color:var(--tm);line-height:1.65">求职无方向，简历石沉大海，面试屡屡碰壁；offer选择困难，怕入错行；入职后频繁跳槽，走了太多无意义的弯路</p>
+          </div>
+          <p style="font-size:.78rem;font-weight:700;color:var(--a);margin-bottom:8px">&#9745; 核心交付物</p>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65">《职业方向最终定位报告》《校招全流程行动方案》优化版简历+面试指导手册</p>
+          <p style="margin-top:14px;font-size:.88rem;color:var(--t);font-weight:600">核心价值：<br>从方向锁定到求职落地全流程服务，带着清晰的方向求职，拿着offer入职，避免入职后频繁跳槽的弯路。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANTAGES -->
+  <section class="section" id="advantages">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">&#10004; 选择我们的理由</div>
+        <h2 class="section-title">4 大核心优势，帮你实现<br>「职业有方向，青春不迷茫」</h2>
+        <p class="section-sub">专业・定制・懂你・落地</p>
+      </div>
+      <div class="adv-grid">
+        <div class="adv-card reveal">
+          <div class="adv-icon">&#128273;</div>
+          <div class="adv-content">
+            <h3>向阳生涯体系认证，专业有保障</h3>
+            <p>所有咨询师均为向阳生涯体系认证的中国职业规划师，熟悉向阳职业规划模型，严格遵循执业标准与伦理，专业度有保障。</p>
+          </div>
+        </div>
+        <div class="adv-card reveal">
+          <div class="adv-icon">&#9889;</div>
+          <div class="adv-content">
+            <h3>拒绝模板化，100% 量身定制</h3>
+            <p>拒绝AI模板报告、标准化通用方案，每一份方案都基于你的个人特质、专业背景、真实需求定制，只做适合你的规划。</p>
+          </div>
+        </div>
+        <div class="adv-card reveal">
+          <div class="adv-icon">&#128104;</div>
+          <div class="adv-content">
+            <h3>懂大学生，更懂你的痛点</h3>
+            <p>深耕大学生职业规划领域，深知「专业不对口、简历没亮点、面试没自信、毕业即迷茫」等核心痛点，服务直击问题，不做无用功。</p>
+          </div>
+        </div>
+        <div class="adv-card reveal">
+          <div class="adv-icon">&#127919;</div>
+          <div class="adv-content">
+            <h3>可落地、可执行，不止于纸上谈兵</h3>
+            <p>所有方案都有具体的动作、时间节点、衡量标准，不仅帮你想清楚方向，更告诉你第一步该怎么走，真正帮你少走弯路。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section section-alt" id="team">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">&#9733; 核心团队</div>
+        <h2 class="section-title">我们的核心团队 向阳生涯认证，<br>5年+大学生职业规划经验</h2>
+        <p class="section-sub">每一位学员都由核心团队亲自对接，确保每一次咨询都足够用心</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar">&#128100;</div>
+          <div class="team-name">首席职业规划师</div>
+          <div class="team-exp">5年+大学生职业规划经验</div>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65;margin-bottom:10px">深耕大学生职业规划领域，专注职业定位与方向探索，已帮助数百名大学生厘清职业方向。</p>
+          <div class="team-tags">
+            <span class="team-tag">职业定位</span>
+            <span class="team-tag">向阳模型</span>
+            <span class="team-tag">校招策略</span>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">&#128101;</div>
+          <div class="team-name">资深职业规划师</div>
+          <div class="team-exp">6年+人才发展经验</div>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65;margin-bottom:10px">原大型企业HRBP，擅长岗位JD分析与职业方向精准匹配，为学员提供贴合市场的求职建议。</p>
+          <div class="team-tags">
+            <span class="team-tag">简历优化</span>
+            <span class="team-tag">面试辅导</span>
+            <span class="team-tag">JD匹配</span>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">&#128187;</div>
+          <div class="team-name">职业发展顾问</div>
+          <div class="team-exp">4年+咨询辅导经验</div>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65;margin-bottom:10px">专注不同专业背景下的职业路径规划，擅长跨专业职业方向探索与能力模型构建，帮助学员找到差异化竞争策略。</p>
+          <div class="team-tags">
+            <span class="team-tag">跨专业规划</span>
+            <span class="team-tag">能力挖掘</span>
+            <span class="team-tag">实习规划</span>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar">&#128140;</div>
+          <div class="team-name">求职策略顾问</div>
+          <div class="team-exp">8年+企业人才发展经验</div>
+          <p style="font-size:.82rem;color:var(--tm);line-height:1.65;margin-bottom:10px">熟悉各行业校招标准与求职路径，擅长校招全流程策略规划，为学员量身定制从方向到offer的完整行动方案。</p>
+          <div class="team-tags">
+            <span class="team-tag">校招攻略</span>
+            <span class="team-tag">offer选择</span>
+            <span class="team-tag">全流程规划</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-promise reveal">
+        <p>我们坚持<strong>小而精的服务理念</strong>，每一位学员都由核心团队亲自对接，确保每一次咨询都足够用心，高质量交付，陪你实现「<strong>职业有方向，青春不迷茫</strong>」。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="section" id="vision">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">&#9679; 我们的初心</div>
+        <h2 class="section-title">见过太多大学生的青春迷茫<br>所以想帮你把<span style="color:var(--p)">职业方向定准</span></h2>
+      </div>
+      <div class="vision-story reveal">
+        <h3>&#10067; 为什么做这件事</h3>
+        <p>我们发现，太多大学生在大学期间虚度时光，毕业时陷入迷茫，海投简历、盲目入职，入职后才发现入错行，频繁跳槽，走了太多无意义的弯路。</p>
+        <p style="margin-top:14px">我们希望用<strong style="color:var(--p)">向阳职业规划模型</strong>的专业方法，帮每一位大学生在进入职场前，就把方向想清楚、定准确。真正实现「<strong style="color:var(--p)">职业有方向，青春不迷茫</strong>」，让你的每一步都走得坚定、有底气。</p>
+      </div>
+      <div class="vision-grid">
+        <div class="vision-value reveal">
+          <div class="vision-phase"><h4>&#9201; 短期</div>
+          <h4>厘清方向，告别迷茫</h4>
+          <p>用向阳职业规划模型精准定位，告别"不知道自己想要什么"的迷茫，让大学学习有目标、有动力。</p>
+        </div>
+        <div class="vision-value reveal">
+          <div class="vision-phase"><h4>&#9889; 中期</div>
+          <h4>精准求职，拿到心仪 offer</h4>
+          <p>带着清晰的方向做简历、投岗位、准备面试，让每次求职都有针对性，拿到真正适合自己的offer。</p>
+        </div>
+        <div class="vision-value reveal">
+          <div class="vision-phase"><h4>&#128200; 长期</div>
+          <h4>建立职业规划思维，一生受益</h4>
+          <p>学会用职业规划的方法看职场发展，未来无论遇到什么职业挑战，你都能从容应对，实现持续成长。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>准备好告别职业迷茫，<br>实现 <span class="highlight">「职业有方向，青春不迷茫」</span> 了吗？</h2>
+        <p>初创福利：前<span style="background:linear-gradient(135deg,#FFD700,#FF8C00);color:var(--t);padding:2px 10px;border-radius:50px;font-weight:700">20名</span>预约用户，可享<strong>免费 1v1 职业测评 + 专属解读</strong>，无任何套路</p>
+        <div class="cta-bonus">
+          <p>&#127942; 初创专属福利 | 免费测评 + 1v1 解读 | 无任何套路</p>
+        </div>
+        <div class="cta-actions">
+          <a href="https://qr61.cn/oB8tj3/qiDA8lU" target="_blank" class="btn-white">&#9743; 立即预约免费 1v1 咨询</a>
+          <a href="#services" class="btn-ow">&#9432; 了解更多服务</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">&#9679; 联系我们</div>
+        <h2 class="section-title">预约免费职业咨询</h2>
+        <p class="section-sub">填写表单，专业顾问将在 24 小时内与您联系，为您定制专属咨询方案</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">&#128205;</div>
+            <div>
+              <h4>办公地址</h4>
+              <p>广州市番禺区广州大学城 中关村青创汇B区4楼</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128231;</div>
+            <div>
+              <h4>联系邮箱</h4>
+              <p>1091770964@qq.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128243;</div>
+            <div>
+              <h4>联系电话</h4>
+              <p>18922467994（微信同号）<br>工作日 9:00 - 18:00</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#127760;</div>
+            <div>
+              <h4>官方网站</h4>
+              <p>www.zhitubang.net</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128736;</div>
+            <div>
+              <h4>公司信息</h4>
+              <p>品牌：职途帮&#8482;<br>公司：广州元本源科技有限公司<br>Guangzhou Yearnbeing Technology Co., Ltd.<br>定位：专注大学生职业规划与生涯发展的服务品牌</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-title">&#9743; 预约咨询表单</div>
+          <div class="form-iframe-wrap">
+            <iframe
+              src="https://qr61.cn/oB8tj3/qiDA8lU"
+              width="100%"
+              height="680"
+              frameborder="0"
+              scrolling="auto"
+              style="border-radius:12px;border:1px solid rgba(11,92,255,.1);display:block;"
+              title="职业规划咨询预约表"
+            ></iframe>
+            <p class="form-alt-link">
+              若表单无法显示，请
+              <a href="https://qr61.cn/oB8tj3/qiDA8lU" target="_blank" style="color:var(--p);font-weight:600;">点击此处直接填写</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo"><div class="logo-icon">&#128073;</div>职途帮<sup>&#8482</sup></a>
+          <p>广州元本源科技有限公司旗下专注大学生职业规划与生涯<br>发展的服务品牌。运用向阳生涯职业规划模型的系统分析<br>方法，帮每一位大学生找准职业方向，实现「职业有方向，<br>青春不迷茫」。</p>
+          <p style="margin-top:8px;color:var(--a);font-weight:600">Guangzhou Yearnbeing Technology Co., Ltd.</p>
+        </div>
+        <div>
+          <h4>服务产品</h4>
+          <ul class="footer-links">
+            <li><a href="#services">基础档 - 职业认知启蒙</a></li>
+            <li><a href="#services">进阶档 - 职业方向精准定位</a></li>
+            <li><a href="#services">高阶档 - 求职落地全流程</a></li>
+            <li><a href="#services">预约免费 1v1 咨询</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>关于我们</h4>
+          <ul class="footer-links">
+            <li><a href="#methodology">核心方法论</a></li>
+            <li><a href="#advantages">核心优势</a></li>
+            <li><a href="#team">核心团队</a></li>
+            <li><a href="#vision">我们的初心</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系方式</h4>
+          <ul class="footer-links">
+            <li><a href="#">&#128205; 广州市番禺区大学城 中关村青创汇B区4楼</a></li>
+            <li><a href="mailto:1091770964@qq.com">&#128231; 1091770964@qq.com</a></li>
+            <li><a href="tel:18922467994">&#128243; 18922467994</a></li>
+            <li><a href="https://www.zhitubang.net">&#127760; www.zhitubang.net</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" style="justify-content:center;text-align:center">
+        <p>&#169; 2024-2026 职途帮&#8482; (ZHITUBANG.NET) 版权所有 | 广州元本源科技有限公司 | Guangzhou Yearnbeing Technology Co., Ltd. | All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+<script>
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function(){
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('active');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+document.getElementById('consultForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  this.style.opacity = '0';
+  this.style.transform = 'translateY(-8px)';
+  this.style.transition = 'all .3s ease';
+  setTimeout(function(){
+    document.getElementById('consultForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('active');
+  }, 300);
+});
+</script>
