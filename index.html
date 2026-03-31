@@ -9,14 +9,14 @@
 <meta name="description" content="职途帮是专注大学生职业规划与生涯发展的服务品牌，依托向阳生涯体系，为大学生提供1v1定制化职业测评、方向定位、简历优化、面试辅导等全流程服务，帮大学生实现「职业有方向，青春不迷茫」。">
 <meta name="author" content="职途帮">
 <meta name="robots" content="index,follow">
-
-
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--p:#168CFF;--pd:#0E77E6;--a:#36D399;--a2:#FF6B35;--bg:#F2F9F7;--bg2:#E6F4EF;--t:#0D1117;--tm:#60728A;--w:#FFFFFF;--bd:#D1E7E0}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','微软雅黑','WenQuanYi Micro Hei',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
 a{color:var(--p);text-decoration:none}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 ::-webkit-scrollbar{width:6px}
@@ -196,10 +196,6 @@ a{color:var(--p);text-decoration:none}
   .footer-bottom{flex-direction:column;text-align:center}
 }
 </style>
-<meta property="og:title" content="职途帮 - 专注大学生职业规划">
-<meta property="og:description" content="向阳生涯体系认证，1v1定制化职业规划，帮每一位大学生实现职业有方向，青春不迷茫">
-<meta property="og:type" content="website">
-<meta name="format-detection" content="telephone=no">
 </head>
 <body>
 <nav class="navbar" id="navbar">
@@ -543,17 +539,6 @@ a{color:var(--p);text-decoration:none}
       <div class="contact-form">
         <div class="form-title">&#9743; 预约咨询表单</div>
         <div class="form-iframe-wrap">
-            <!-- 微信降级按钮 -->
-            <div id="wechat-fallback" style="display:none;text-align:center;padding:48px 24px;background:#fff;border-radius:16px;border:1px solid rgba(22,140,255,.12);">
-              <div style="font-size:2.5rem;margin-bottom:16px;">📋</div>
-              <h3 style="font-size:1.05rem;font-weight:700;color:#0D1117;margin-bottom:10px;">预约咨询表单</h3>
-              <p style="font-size:.85rem;color:#60728A;margin-bottom:24px;line-height:1.7;">点击下方按钮填写咨询信息<br>我们将在24小时内联系您</p>
-              <a href="https://qr61.cn/oB8tj3/qiDA8lU" style="display:inline-block;padding:14px 36px;background:#168CFF;color:#fff;border-radius:50px;font-weight:700;font-size:.95rem;">
-                立即填写预约表单 →
-              </a>
-            </div>
-            <!-- 普通浏览器显示iframe -->
-            <div id="normal-iframe">
           <iframe
             src="https://qr61.cn/oB8tj3/qiDA8lU"
             width="100%"
@@ -568,8 +553,6 @@ a{color:var(--p);text-decoration:none}
             <a href="https://qr61.cn/oB8tj3/qiDA8lU" target="_blank" style="color:var(--p);font-weight:600;">点击此处直接填写</a>
           </p>
         </div>
-            </div>
-          </div>
       </div>
     </div>
   </div>
@@ -633,18 +616,6 @@ window.addEventListener('scroll', function(){
     });
   }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(el){ io.observe(el); });
-})();
-</script>
-
-<script>
-(function(){
-  var ua = navigator.userAgent.toLowerCase();
-  if(/micromessenger/.test(ua)){
-    var el = document.getElementById('wechat-fallback');
-    var el2 = document.getElementById('normal-iframe');
-    if(el) el.style.display = 'block';
-    if(el2) el2.style.display = 'none';
-  }
 })();
 </script>
 </body>
